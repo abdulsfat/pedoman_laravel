@@ -17,6 +17,12 @@ use Add\Http\Controller\UserController;
 Route::get('/home', function () {
     return view('home');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/lapor', function(){
     return view('user.lapor');
 });
+
