@@ -14,12 +14,16 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->char('nim', 16)->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['mahasiswa', 'petugas', 'admin'])->default('mahasiswa');
             $table->rememberToken();
             $table->timestamps();
+
         });
+
     }
 
     /**

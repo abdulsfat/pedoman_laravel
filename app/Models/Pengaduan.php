@@ -8,13 +8,32 @@ use Illuminate\Database\Eloquent\Model;
 class Pengaduan extends Model
 {
     use HasFactory;
+
+    /**
+     *
+     *
+     * @var string
+     */
     protected $table = 'pengaduan';
-    protected $primaryKey = 'id_pengaduan';
+
+    /**
+     *
+     * @var array
+     */
     protected $fillable = [
+        'pengaduan_id',
         'tgl_pengaduan',
-        'nik',
-        'isi_laporan',
+        'nim',
+        'user_id',
+        'judul',
+        'deskripsi',
         'foto',
         'status',
     ];
+
+    public function pengaduan()
+    {
+        return $this->belongsTo(Pengaduan::class);
+    }
+
 }
