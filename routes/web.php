@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Add\Http\Controller\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,17 +13,23 @@ use Add\Http\Controller\UserController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+ */
 
-Route::get('/home', function () {
-    return view('home');
+//  jikalau user sudah login maka dibatasi
+Route::middleware(['guest'])->group(function () {
+
 });
+Route::get('/', [UserController::class, 'index'])->name('depan.home');
+Route::get('/prosedur', [UserController::class, 'prosedur'])->name('depan.prosedur');
+Route::get('/kontak', [UserController::class, 'kontak'])->name('depan.kontak');
+Route::get('/pengaduan', [UserController::class, 'pengaduan'])->name('depan.pengaduan');
+Route::get('/laporan', [UserController::class, 'laporan'])->name('depan.laporan');
+
+Route::post('/store', [UserController::class, 'storePengaduan'])->name('depan.store');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
 
-Route::get('/lapor', function(){
-    return view('user.lapor');
 });
-
