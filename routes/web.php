@@ -33,3 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
 
 });
+
+Route::get('/dashboard', function () {
+    return view('admin.index');
+});
