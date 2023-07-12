@@ -40,7 +40,7 @@
             class=""
             href="#"
           >
-          <img src="{{ asset('images/Logo.svg') }}" alt="Logo" style="width: 70%" class="">
+          <img src="{{ asset('images/Logo.svg') }}" alt="Logo" style="width: 70%; margin-left: 15px;" class="w">
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
@@ -382,7 +382,6 @@
             </div>
             <ul class="flex items-center flex-shrink-0 space-x-6">
               <!-- Theme toggler -->
-              <button @click="openModal">tres</button>
               <li class="flex">
                 <button
                   class="rounded-md focus:outline-none focus:shadow-outline-purple"
@@ -554,7 +553,7 @@
     </div>
   </body>
   {{-- modal --}}
-  <div
+  {{-- <div
       x-show="isModalOpen"
       x-transition:enter="transition ease-out duration-150"
       x-transition:enter-start="opacity-0"
@@ -631,5 +630,14 @@
           </button>
         </footer>
       </div>
-    </div>
+    </div> --}}
+
+    <script>
+      function confirmation(){
+        var result = confirm("Are you sure to delete?");
+        if(result){
+          console.log("Deleted")
+        }
+      }
+    </script>
 </html>

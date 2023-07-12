@@ -26,8 +26,8 @@
           <div class="h-32 md:h-auto md:w-1/2 flex items-center justify-center ">
             <img
               aria-hidden="true"
-              class="object-cover w-full h-full dark:hidden"
-              src="{{asset('images/pose08_male')}}"
+              class="object-cover sm:w-full md:w-1/2 dark:hidden"
+              src="{{asset('images/pose08_male.png')}}"
               alt="Office"
             />
             <img

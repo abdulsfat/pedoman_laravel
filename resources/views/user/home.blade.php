@@ -16,7 +16,7 @@
         <p class="span-dec-text mt-4">Sampaikan Laporan Anda di manapun kapanpun secara online melalui layanan aplikasi pedoman yang dapat terhubung secara langsung dengan petugas.</p>
         <div class="d-grid gap-2 d-sm-flex">
 
-          <button type="button" class="mt-4 btn btn-primary btn-2xl rounded-pill px-4 gap-3">Buat Pengaduan</button>
+          <a href="{{ route('depan.pengaduan') }}" type="button" class="mt-4 btn btn-primary btn-2xl rounded-pill px-4 gap-3">Buat Pengaduan</a>
 
         </div>
       </div>
@@ -27,7 +27,7 @@
   </div>
 </section>
     <!-- ini tentang kita -->
-    <section class="container konten">
+    <section class="container mb-5">
     <div class="text-center">
     <p>"Selamat datang di Pedoman, aplikasi Layanan Pengaduan Online Mahasiswa STT Terpadu Nurul Fikri. Kami hadir untuk membantu mahasiswa dalam mengatasi masalah dan mengajukan pengaduan dengan mudah. Pedoman dirancang dengan antarmuka yang intuitif dan sederhana, sehingga mahasiswa dapat dengan cepat mengajukan pengaduan dan memantau perkembangannya. Kami menjaga kerahasiaan data pribadi mahasiswa dengan baik. Kami berkomitmen untuk menangani setiap pengaduan dengan cermat dan adil. Bergabunglah dengan Pedoman sekarang dan mari kita bersama-sama menciptakan lingkungan akademik yang lebih baik!"</p>
     </div>

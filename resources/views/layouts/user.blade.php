@@ -20,7 +20,7 @@
 
 <!-- navbar  -->
 <div class="">
-<nav class="navbar navbar-custom navbar-expand-lg shadow-sm p-3 mb-5  fixed-top " aria-label="Thirteenth navbar example">
+<nav class="navbar navbar-custom navbar-expand-lg shadow-sm p-3 mb-5   "fixed-top aria-label="Thirteenth navbar example">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -42,16 +42,16 @@
                 <a class="nav-link {{ request()->is('prosedur') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.prosedur') }}">Prosedur</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link {{ request()->is('user/laporan') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.laporan') }}">Laporan</a>
-              </li>
-              <li class="nav-item">
+              <li class="ms-5 nav-item">
                 <a class="nav-link {{ request()->is('kontak') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.kontak') }}">Kontak</a>
               </li>
-              {{-- kasih akses hanya untuk yang login --}}
-              <li class="ms-5 nav-item">
-                <a class="nav-link {{ request()->is('laporan') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.laporan') }}">Laporan</a>
-              </li>
+              @auth
+              @if(Auth::user()->role == 'mahasiswa')
+                  <li class="ms-5 nav-item">
+                      <a class="nav-link {{ request()->is('user/laporan') ? 'active' : '' }}" aria-current="page" href="{{ route('depan.laporan') }}">Laporan</a>
+                  </li>
+              @endif
+          @endauth
           </ul>
       
           <div class="d-lg-flex col-lg-3 justify-content-lg-end">

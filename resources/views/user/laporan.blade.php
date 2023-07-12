@@ -5,22 +5,23 @@
 <link rel="stylesheet" href="{{ asset('css/laporan.css') }}">
 @endsection
 
-@section('title', ' - Pengaduan mahasiswa')
+@section('title', 'Laporan - Pengaduan mahasiswa')
 
 @section('content')
 {{-- Section Card --}}
-<div class="container">
+<section mb-5 class=" mt-5 container overflow-hidden ">
+<div class="container mt-5 overflow-hidden">
     <div class="row justify-content-center">
         </div>
-        <div class="">
+        <div class="card text-center card-laporan">
             <div class="content content-bottom shadow">
                 <div>
-                    <img src="{{ asset('images/user_default.svg') }}" alt="user profile" class="photo">
-                    <div class="self-align">
-                        <h5><a style="color: #6a70fc" href="#">{{ Auth::user()->name }}</a></h5>
-                        <p class="text-dark">{{ Auth::user()->email }}</p>
+                    {{-- <img src="{{ asset('images/user_default.svg') }}" alt="user profile" class="photo"> --}}
+                    <div class="p-3 mt-2 self-alig semi-bold ">
+                        <h5>{{ Auth::user()->name }}</h5>
+                        <p class=" italic">{{ Auth::user()->email }}</p>
                     </div>
-                    <div class="row text-center">
+                    <div class="row text-center mb-4">
                         <div class="col">
                             <p class="italic mb-0">Terverifikasi</p>
                             <div class="text-center">
@@ -43,65 +44,96 @@
                 </div>
             </div>
         </div>
-
-
-    <div class="row mt-5">
-        <div class="col-lg-12">
-            <a class="d-inline tab {{ $siapa != 'me' ? 'tab-active' : ''}} mr-4" href="{{ route('depan.laporan') }}">
-                Semua
-            </a>
-            <a class="d-inline tab {{ $siapa == 'me' ? 'tab-active' : ''}}" href="{{ route('depan.laporan', 'me') }}">
-                Laporan Saya
-            </a>
-            <hr>
-        </div>
-        @foreach ($pengaduan as $k => $v)
-        <div class="col-lg-12">
-            <div class="laporan-top">
-                <img src="{{ asset('images/user_default.svg') }}" alt="profile" class="profile">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        @if ($v->user)
-                        <p>{{ $v->user->name }}</p>
-                    @endif
-                        @if ($v->status == '0')
-                        <p class="text-danger">Pending</p>
-                        @elseif($v->status == 'proses')
-                        <p class="text-warning">{{ ucwords($v->status) }}</p>
-                        @else
-                        <p class="text-success">{{ ucwords($v->status) }}</p>
-                        @endif
+        
+        <div class="card text-center mt-3 mb-5">
+            <div class="card-header">
+              <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link {{ $siapa != 'me' ? 'active' : ''}} mr-4" href="{{ route('depan.laporan') }}">Semua Laporan</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {{ $siapa == 'me' ? 'active' : ''}}" href="{{ route('depan.laporan', 'me') }}">Laporan Saya</a>
+                  </li>
+                  
+              </ul>
+            </div>
+            <div class="card-body">
+              <div class="col-lg-12">
+                <div class="laporan-top">
+                  {{-- <img src="{{ asset('images/user_default.svg') }}" alt="profile" class="profile"> --}}
+                  <div class="">
+                    <div class="table-responsive">
+                        <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Bukti</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Judul</th>
+                            <th scope="col">Deskripsi</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Tanggal</th>
+                            <th scope="col">Tanggapan</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($pengaduan as $key => $item)
+                            <tr>
+                              <td scope="row">{{ $key + 1 }}</td>
+                              @if ($item->foto)
+                                <td class="laporan-bottom">
+                                  <img src="{{ Storage::url($item->foto) }}" alt="{{ 'Gambar '.$item->judul_laporan }}">
+                                </td>
+                              @else
+                                <td></td>
+                              @endif
+                              <td>
+                                @if ($item->user)
+                                  <p>{{ $item->user->name }}</p>
+                                @endif
+                              </td>
+                              <td>
+                                <p>{{ $item->judul }}</p>
+                              </td>
+                              <td>
+                                <p>{{ $item->deskripsi }}</p>
+                              </td>
+                              <td>
+                                @if ($item->status == 'pending')
+                                  <p class="text-danger">Pending</p>
+                                @elseif ($item->status == 'diproses')
+                                  <p class="text-warning">{{ ucwords($item->status) }}</p>
+                                @else
+                                  <p class="text-success">{{ ucwords($item->status) }}</p>
+                                @endif
+                              </td>
+                              <td>
+                                <p>{{ \Carbon\Carbon::parse($item->tgl_pengaduan)->format('d M, h:i') }}</p>
+                              </td>
+                              <td>
+                                @if ($item->tanggapan)
+                                  <p class="mt-3 mb-1">{{ '*Tanggapan dari '. $item->tanggapan->petugas->nama_petugas }}</p>
+                                  <p class="light">{{ $item->tanggapan->tanggapan }}</p>
+                                @endif
+                              </td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
                     </div>
-                    <div>
-                    <p>{{ \Carbon\Carbon::parse($v->tgl_pengaduan)->format('d M, h:i') }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+</div>
+</section>
 
-                    </div>
-                </div>
-            </div>
-            <div class="laporan-mid">
-                <div class="judul-laporan">
-                    {{ $v->judul }}
-                </div>
-                <p>{{ $v->deskripsi }}</p>
-            </div>
-            <div class="laporan-bottom">
-                @if ($v->foto != null)
-                <img src="{{ Storage::url($v->foto) }}" alt="{{ 'Gambar '.$v->judul_laporan }}" class="gambar-lampiran">
-                @endif
-                @if ($v->tanggapan != null)
-                <p class="mt-3 mb-1">{{ '*Tanggapan dari '. $v->tanggapan->petugas->nama_petugas }}</p>
-                <p class="light">{{ $v->tanggapan->tanggapan }}</p>
-                @endif
-            </div>
-            <hr>
-        </div>
-        @endforeach
-    </div>
-</div>
-</div>
 {{-- Footer --}}
-
+@include('user.footer')
 @endsection
+
 
 @section('js')
 @if (Session::has('pesan'))
