@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 
-@section('title')
-Laporan
-@endsection
+@section('title', 'Laporan')
 
 @section('konten')
 <main class="h-full pb-16 overflow-y-auto">

@@ -41,7 +41,11 @@
               <li class="ms-5 nav-item">
                 <a class="nav-link {{ request()->is('prosedur') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.prosedur') }}">Prosedur</a>
               </li>
-              <li class="ms-5 nav-item">
+
+              <li class="nav-item">
+                <a class="nav-link {{ request()->is('user/laporan') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.laporan') }}">Laporan</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link {{ request()->is('kontak') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.kontak') }}">Kontak</a>
               </li>
               {{-- kasih akses hanya untuk yang login --}}
