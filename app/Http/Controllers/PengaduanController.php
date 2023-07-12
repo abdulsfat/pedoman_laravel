@@ -97,11 +97,16 @@ class PengaduanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $pengaduan = Pengaduan::find($id);
-        $pengaduan->delete();
+{
+    $pengaduan = Pengaduan::find($id);
 
-        Alert::success('Berhasil', 'Pengaduan telah di hapus');
-        return redirect('admin/pengaduan');
+    if ($pengaduan) {
+        $pengaduan->delete();
+        session()->flash('success', 'Pengaduan telah dihapus');
+    } else {
+        session()->flash('error', 'Pengaduan tidak ditemukan');
     }
+
+    return redirect('admin/pengaduan');
+}
 }
