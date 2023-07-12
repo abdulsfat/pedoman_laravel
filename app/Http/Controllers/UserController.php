@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
     // untuk memanggil atau menampilkan halaman index (utama)
+
     public function index()
     {
         return view('user.home');
@@ -64,7 +65,7 @@ class UserController extends Controller
             'judul' => $data['judul'],
             'deskripsi' => $data['deskripsi'],
             'foto' => $data['foto'] ?? '',
-            'status' => '0',
+            'status' => 'pending',
         ]);
 
         if ($pengaduan) {
