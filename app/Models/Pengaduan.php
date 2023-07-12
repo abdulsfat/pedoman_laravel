@@ -35,5 +35,16 @@ class Pengaduan extends Model
     {
         return $this->belongsTo(Pengaduan::class);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function email()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function details() {
+        return $this->hasMany(Pengaduan::class, 'id', 'id');
+    }
 
 }
