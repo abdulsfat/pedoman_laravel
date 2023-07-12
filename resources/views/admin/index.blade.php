@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('konten')
+@section('title', 'Dashboard')
 <main class="h-full overflow-y-auto">
   <div class="container px-6 mx-auto grid">
     @if(Auth::user()->role === 'admin')

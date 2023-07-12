@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Windmill Dashboard</title>
+    <title>@yield('title')</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -211,13 +211,11 @@
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
-              <span
-                class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg"
-                aria-hidden="true"
-              ></span>
+            <span class="{{ request()->is('dashboard') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
               <a
-                class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                href="index.html"
+                class=" {{ request()->is('dashboard') ? 'text-gray-800 dark:text-gray-100' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
+                
+                href="{{ route('admin.index') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -239,9 +237,10 @@
           </ul>
           <ul>
             <li class="relative px-6 py-3">
+            <span class="{{ request()->is('admin/pengaduan') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
               <a
-                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="forms.html"
+                class=" {{ request()->is('admin/pengaduan') ? 'text-gray-800 dark:text-gray-100' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{{ route('admin.pengaduan') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -263,9 +262,10 @@
               </a>
             </li>
             <li class="relative px-6 py-3">
+            <span class="{{ request()->is('admin/mahasiswa') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
               <a
-                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="cards.html"
+                class=" {{ request()->is('admin/mahasiswa') ? 'text-gray-800 dark:text-gray-100' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{{ route('admin.mahasiswa') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -286,10 +286,37 @@
 
               </a>
             </li>
+            @if( Auth::user()->role == 'admin')
             <li class="relative px-6 py-3">
+
+              <span class="{{ request()->is('admin/petugas') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
               <a
-                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="charts.html"
+                class=" {{ request()->is('admin/petugas') ? 'text-gray-800 dark:text-gray-100' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{{ route('admin.petugas') }}"
+              >
+                <svg
+                  class="w-5 h-5"
+                  aria-hidden="true"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                  ></path>
+                </svg>
+                <span class="ml-4">Petugas</span>
+              </a>
+            </li>
+            @endif
+            <li class="relative px-6 py-3">
+            <span class="{{ request()->is('admin/laporan') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
+              <a
+                class=" {{ request()->is('admin/laporan') ? ' text-gray-800  dark:text-gray-100' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{{ route('admin.laporan') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -473,12 +500,21 @@
                   aria-label="Account"
                   aria-haspopup="true"
                 >
-                  <img
-                    class="object-cover w-8 h-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
-                    alt=""
-                    aria-hidden="true"
-                  />
+                @if(Auth::user()->role === 'admin')
+                <img
+                class="object-cover w-8 h-8 rounded-full"
+                src="https://cdn-icons-png.flaticon.com/128/1421/1421222.png"
+                alt=""
+                aria-hidden="true"
+              />
+                @elseif(Auth::user()->role === 'petugas')
+                <img
+                class="object-cover w-8 h-8 rounded-full"
+                src="https://cdn-icons-png.flaticon.com/512/314/314479.png"
+                alt=""
+                aria-hidden="true"
+              />
+                @endif                
                 </button>
                 <template x-if="isProfileMenuOpen">
                   <ul
