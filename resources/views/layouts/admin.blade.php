@@ -36,6 +36,7 @@
       >
         <div class="py-4 text-gray-500 dark:text-gray-400">
           <a
+
             class=""
             href="#"
           >
@@ -92,6 +93,7 @@
               </a>
             </li>
             <li class="relative px-6 py-3">
+
               <span class="{{ request()->is('admin/mahasiswa') ? 'absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
               <a
                 class=" {{ request()->is('admin/mahasiswa') ? 'text-gray-800' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -115,6 +117,7 @@
               </a>
             </li>
             <li class="relative px-6 py-3">
+
               <span class="{{ request()->is('admin/laporan') ? 'absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
               <a
                 class=" {{ request()->is('admin/laporan') ? 'text-gray-800' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -138,7 +141,6 @@
                 <span class="ml-4">Laporan</span>
               </a>
             </li>
-           
           <div class="px-6 my-6">
             <button
               class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
@@ -175,6 +177,7 @@
       >
         <div class="py-4 text-gray-500 dark:text-gray-400">
           <a
+
             class=""
             href="#"
           >
@@ -228,7 +231,9 @@
                     d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
                   ></path>
                 </svg>
+
                 <span class="ml-4">Pengaduan</span>
+
               </a>
             </li>
             <li class="relative px-6 py-3">
@@ -250,7 +255,9 @@
                     d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
                   ></path>
                 </svg>
+
                 <span class="ml-4">Mahasiswa</span>
+
               </a>
             </li>
             <li class="relative px-6 py-3">

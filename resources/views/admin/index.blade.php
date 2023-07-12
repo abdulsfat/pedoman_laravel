@@ -222,6 +222,7 @@
           {{ $admin }}
           </p>
         </div>
+
       </div>
       <!-- Card -->
       <div
@@ -253,6 +254,7 @@
       </div>
     </div>
     @endif
+
 
     <!-- New Table -->
     {{--  <div class="w-full overflow-hidden rounded-lg shadow-xs">
