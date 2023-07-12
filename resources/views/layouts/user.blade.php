@@ -4,7 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;1,400;&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     @yield('css')
 
@@ -15,7 +20,7 @@
 
 <!-- navbar  -->
 <div class="">
-<nav class="navbar navbar-expand-lg bg-body-tertiary rounded " aria-label="Thirteenth navbar example">
+<nav class="navbar navbar-custom navbar-expand-lg shadow-sm p-3 mb-5  fixed-top " aria-label="Thirteenth navbar example">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -26,21 +31,22 @@
       <img src="{{ asset('images/Logo.svg') }}" alt="Logo"  height="30" class="d-inline-block align-text-top">
         </a>
 
-          <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+          <ul class=" navbar-nav col-lg-6 justify-content-lg-center">
               <li class="nav-item">
                 <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page" href="{{ route('depan.home') }}">Beranda</a>
               </li>
-              <li class="nav-item">
+              <li class="ms-5 nav-item">
                 <a class="nav-link {{ request()->is('pengaduan') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.pengaduan') }}">Pengaduan</a>
               </li>
-              <li class="nav-item">
+              <li class="ms-5 nav-item">
                 <a class="nav-link {{ request()->is('prosedur') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.prosedur') }}">Prosedur</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link {{ request()->is('laporan') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.laporan') }}">Laporan</a>
-              </li>
-              <li class="nav-item">
+              <li class="ms-5 nav-item">
                 <a class="nav-link {{ request()->is('kontak') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.kontak') }}">Kontak</a>
+              </li>
+              {{-- kasih akses hanya untuk yang login --}}
+              <li class="ms-5 nav-item">
+                <a class="nav-link {{ request()->is('laporan') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.laporan') }}">Laporan</a>
               </li>
           </ul>
       
@@ -50,20 +56,20 @@
               <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
                 @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                    @endif
+    @if (Route::has('login'))
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+        </li>
+    @endif
 
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                @else
+    @if (Route::has('register'))
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+        </li>
+    @endif
+@else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle medium" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
 
