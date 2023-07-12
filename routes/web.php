@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\TanggapanController;
@@ -21,6 +22,10 @@ use Illuminate\Support\Facades\Route;
  */
 
 Auth::routes();
+
+// Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+// Route::post('/register', [RegisterController::class, 'register']);
+
 Route::get('/', [UserController::class, 'index'])->name('depan.home');
 Route::get('/prosedur', [UserController::class, 'prosedur'])->name('depan.prosedur');
 Route::get('/kontak', [UserController::class, 'kontak'])->name('depan.kontak');
@@ -38,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
 
 });
+
 
 // Khusus Admin & Petugas
 Route::group(['middleware' => ['auth', 'peran:admin-petugas']], function () {
