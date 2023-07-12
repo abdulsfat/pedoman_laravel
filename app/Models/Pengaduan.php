@@ -33,7 +33,7 @@ class Pengaduan extends Model
 
     public function pengaduan()
     {
-        return $this->belongsTo(Pengaduan::class);
+    	return $this->hasOne(Pengaduan::class,'id', 'id');
     }
     public function user()
     {

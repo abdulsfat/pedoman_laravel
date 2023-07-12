@@ -65,9 +65,21 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function pengaduans(): HasMany
+    public function pengaduan(): HasMany
     {
         return $this->hasMany(Pengaduan::class);
+    }
+
+    public function laporan()
+    {
+        return $this->hasMany(Laporan::class);
+    }
+
+    public function index()
+    {
+        $data = User::whereIn('role', ['petugas', 'admin'])->get();
+
+        return view('admin.index', compact('data'));
     }
 
 }

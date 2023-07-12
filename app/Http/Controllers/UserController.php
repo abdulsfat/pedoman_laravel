@@ -53,26 +53,29 @@ class UserController extends Controller
             return redirect()->back()->withInput()->withErrors($validate);
         }
 
-        if ($request->file('foto')) {
-            $data['foto'] = $request->file('foto')->store('assets/pengaduan', 'public');
-        }
-
         date_default_timezone_set('Asia/Bangkok');
 
-        $pengaduan = Pengaduan::create([
-            'tgl_pengaduan' => date('Y-m-d H:i:s'),
-            'user_id' => auth()->id(),
-            'judul' => $data['judul'],
-            'deskripsi' => $data['deskripsi'],
-            'foto' => $data['foto'] ?? '',
-            'status' => 'pending',
-        ]);
+      if ($request->hasFile('foto')) {
+    $foto = $request->file('foto')->store('assets/laporan', 'public');
+} else {
+    $foto = null;
+}
+
+$pengaduan = Pengaduan::create([
+    'tgl_pengaduan' => date('Y-m-d H:i:s'),
+    'user_id' => auth()->id(),
+    'judul' => $request->judul,
+    'deskripsi' => $request->deskripsi,
+    'foto' => $foto,
+    'status' => 'pending',
+]);
 
         if ($pengaduan) {
             return redirect()->route('depan.laporan', 'me')->with(['success' => 'Berhasil terkirim!', 'type' => 'success']);
         } else {
             return redirect()->back()->with(['error' => 'Gagal terkirim!', 'type' => 'danger']);
         }
+        
     }
 
     public function laporan($siapa = '')
@@ -103,4 +106,7 @@ class UserController extends Controller
         }
 
     }
+
+
 }
+

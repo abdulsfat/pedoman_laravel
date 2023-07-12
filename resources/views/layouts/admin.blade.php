@@ -44,9 +44,9 @@
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
-              <span class="{{ request()->is('dashboard') ? 'absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
+              <span class="{{ request()->is('dashboard') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
               <a
-                class=" {{ request()->is('dashboard') ? 'text-gray-800' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                class=" {{ request()->is('dashboard') ? 'text-gray-800 dark:text-gray-100' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
                 
                 href="{{ route('admin.index') }}"
               >
@@ -70,9 +70,9 @@
           </ul>
           <ul>
             <li class="relative px-6 py-3">
-              <span class="{{ request()->is('admin/pengaduan') ? 'absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
+              <span class="{{ request()->is('admin/pengaduan') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
               <a
-                class=" {{ request()->is('admin/pengaduan') ? 'text-gray-800' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                class=" {{ request()->is('admin/pengaduan') ? 'text-gray-800 dark:text-gray-100' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                 href="{{ route('admin.pengaduan') }}"
               >
                 <svg
@@ -94,9 +94,9 @@
             </li>
             <li class="relative px-6 py-3">
 
-              <span class="{{ request()->is('admin/mahasiswa') ? 'absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
+              <span class="{{ request()->is('admin/mahasiswa') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
               <a
-                class=" {{ request()->is('admin/mahasiswa') ? 'text-gray-800' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                class=" {{ request()->is('admin/mahasiswa') ? 'text-gray-800 dark:text-gray-100' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                 href="{{ route('admin.mahasiswa') }}"
               >
                 <svg
@@ -116,11 +116,37 @@
                 <span class="ml-4">Mahasiswa</span>
               </a>
             </li>
+            @if( Auth::user()->role == 'admin')
             <li class="relative px-6 py-3">
 
-              <span class="{{ request()->is('admin/laporan') ? 'absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
+              <span class="{{ request()->is('admin/petugas') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
               <a
-                class=" {{ request()->is('admin/laporan') ? 'text-gray-800' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                class=" {{ request()->is('admin/petugas') ? 'text-gray-800 dark:text-gray-100' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{{ route('admin.petugas') }}"
+              >
+                <svg
+                  class="w-5 h-5"
+                  aria-hidden="true"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                  ></path>
+                </svg>
+                <span class="ml-4">Petugas</span>
+              </a>
+            </li>
+            @endif
+
+            <li class="relative px-6 py-3">
+              <span class="{{ request()->is('admin/laporan') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
+              <a
+                class=" {{ request()->is('admin/laporan') ? ' text-gray-800  dark:text-gray-100' : '' }} inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                 href="{{ route('admin.laporan') }}"
               >
                 <svg
@@ -143,7 +169,7 @@
             </li>
           <div class="px-6 my-6">
             <button
-              class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+              class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-950 focus:outline-none focus:shadow-outline-blue"
             >
               Create account
               <span class="ml-2" aria-hidden="true">+</span>
@@ -186,7 +212,7 @@
           <ul class="mt-6">
             <li class="relative px-6 py-3">
               <span
-                class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg"
                 aria-hidden="true"
               ></span>
               <a
@@ -321,31 +347,10 @@
               </svg>
             </button>
             <!-- Search input -->
-            <div class="flex justify-center flex-1 lg:mr-32">
-              <div
-                class="relative w-full max-w-xl mr-6 focus-within:text-purple-500"
-              >
-                <div class="absolute inset-y-0 flex items-center pl-2">
-                  <svg
-                    class="w-4 h-4"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
-                  type="text"
-                  placeholder="Search for projects"
-                  aria-label="Search"
-                />
-              </div>
+            <div class="flex justify-left flex-1 lg:mr-32">
+              
+              <span>Layanan Pengaduan Online Mahasiswa STT - Nurul Fikri </span>
+              
             </div>
             <ul class="flex items-center flex-shrink-0 space-x-6">
               <!-- Theme toggler -->
@@ -359,7 +364,7 @@
                     <svg
                       class="w-5 h-5"
                       aria-hidden="true"
-                      fill="currentColor"
+                      fill="Blue"
                       viewBox="0 0 20 20"
                     >
                       <path
@@ -371,7 +376,7 @@
                     <svg
                       class="w-5 h-5"
                       aria-hidden="true"
-                      fill="currentColor"
+                      fill="Blue"
                       viewBox="0 0 20 20"
                     >
                       <path
@@ -395,7 +400,7 @@
                   <svg
                     class="w-5 h-5"
                     aria-hidden="true"
-                    fill="currentColor"
+                    fill="Blue"
                     viewBox="0 0 20 20"
                   >
                     <path
@@ -454,10 +459,15 @@
                   </ul>
                 </template>
               </li>
+
+              {{-- Nama User --}}
+              <span class="font-semibold decoration-blue-800 ">{{ Auth::user()->name }}</span>
+              {{-- Nama User End --}}
+
               <!-- Profile menu -->
               <li class="relative">
                 <button
-                  class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
+                  class="align-middle rounded-full focus:shadow-outline-blue focus:outline-none"
                   @click="toggleProfileMenu"
                   @keydown.escape="closeProfileMenu"
                   aria-label="Account"
@@ -480,51 +490,6 @@
                     class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
                     aria-label="submenu"
                   >
-                    <li class="flex">
-                      <a
-                        class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                        href="#"
-                      >
-                        <svg
-                          class="w-4 h-4 mr-3"
-                          aria-hidden="true"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                          ></path>
-                        </svg>
-                        <span>Profile</span>
-                      </a>
-                    </li>
-                    <li class="flex">
-                      <a
-                        class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                        href="#"
-                      >
-                        <svg
-                          class="w-4 h-4 mr-3"
-                          aria-hidden="true"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                          ></path>
-                          <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <span>Settings</span>
-                      </a>
-                    </li>
                     <li class="flex">
                       <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
                          href="{{ route('logout') }}"

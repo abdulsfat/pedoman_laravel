@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\TanggapanController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
@@ -41,9 +42,19 @@ Route::middleware(['auth'])->group(function () {
 // Khusus Admin & Petugas
 Route::group(['middleware' => ['auth', 'peran:admin-petugas']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.index');
+    Route::get('/admin/tanggapan/{id}', [TanggapanController::class, 'show'])->name('admin.tanggapan');
+    Route::post('/admin/tanggapan/', [TanggapanController::class, 'store'])->name('tanggapan.store');
+
     Route::get('/admin/pengaduan', [PengaduanController::class, 'index'])->name('admin.pengaduan');
     Route::get('/admin/pengaduan/detail/{id}', [PengaduanController::class, 'detail'])->name('pengaduan.detail');
     Route::delete('/admin/pengaduan/{id}', [PengaduanController::class, 'destroy'])->name('admin.pengaduan.destroy');
+
     Route::get('/admin/mahasiswa', [AdminController::class, 'mahasiswa'])->name('admin.mahasiswa');
+    Route::get('/admin/petugas', [AdminController::class, 'petugas'])->name('admin.petugas');
+
+    Route::get('/admin/petugas/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/admin/petugas/create', [AdminController::class, 'store'])->name('admin.store');
     Route::get('/admin/laporan', [AdminController::class, 'laporan'])->name('admin.laporan');
+    Route::get('/admin/laporan/cetak', [AdminController::class, 'cetak'])->name('laporan.cetak');
+
 });
