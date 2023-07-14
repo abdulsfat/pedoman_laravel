@@ -1,4 +1,3 @@
-
 body {
     font-family: "Poppins", sans-serif;
 }
@@ -9,6 +8,14 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: 60px;
+}
+.h1-primary-text .span {
+    font-family: Poppins;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 60px;
+    color: #0233b3;
 }
 
 .span-dec-text {
@@ -55,13 +62,36 @@ body {
     font-style: normal;
     font-weight: 500;
     line-height: 25px;
+
+    overflow: hidden;
+    top: 0;
+    width: 100%;
 }
 
 .konten {
+    padding-top: 60px;
     height: 100vh;
 }
 .hero {
     height: 500px;
+}
+
+.btn-hero {
+    margin-top: 20px;
+    display: flex;
+    padding: 19px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 15px;
+    background: var(--brand-primary-bg, #0233b3);
+    text-decoration: none;
+    color: var(--gray-gray-50, #fafafa);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px; /* 100% */
 }
 
 .footer {
@@ -69,16 +99,12 @@ body {
     color: #ffffff;
 }
 
-
-
 .header {
-    position: relative;
+    padding-top: 60px;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(340deg, #0f379d 0%, rgb(13, 66, 201) 100%);
-    overflow: hidden;
+    background: linear-gradient(340deg, #0a2b7f 0%, rgb(20, 72, 202) 100%);
 }
-
 
 @media screen and (max-width: 576px) {
     .row .col .content-top {
@@ -135,7 +161,7 @@ body {
     .row .col .content {
         padding: 32px 20px 32px 20px;
         background: #fff;
-        margin-top: 160px;
+        margin-top: 40px;
         border-color: #0233b3;
     }
 }
@@ -176,4 +202,4 @@ body {
     width: 100%;
 }
 
-/*# sourceMappingURL=app.css.map */
+/* Prosedur Section */

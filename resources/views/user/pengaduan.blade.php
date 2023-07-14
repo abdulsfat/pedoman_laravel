@@ -11,14 +11,14 @@
 {{-- Section Header --}}
 <section class="header konten">
     <div class="container">
-    <div class="text-center mt-5">
-        <h1 class=" mt-5">Layanan Pengaduan mahasiswa</h1>
-        <p class="italic text-white">Sampaikan laporan Anda langsung kepada yangg</p> 
+    <div class="text-center ">
+        <h5 class="pt-5 semi-bold text-white">Sampaikan pengaduan Anda langsung kepada petugas yang berwenang</h5>
+        <p class="italic text-white">Harap buat pengaduan yang relevan dengan prosedur dan disarankan mencantumkan bukti foto yang mendukung.</p> 
     </div>
 {{-- Section Card Pengaduan --}}
 <div class="row justify-content-center">
     <div class="col-lg-6 col-10 col">
-        <div class="content shadow">
+        <div class="content shadow card">
 
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
@@ -30,15 +30,15 @@
                 <div class="alert alert-{{ Session::get('type') }}">{{ Session::get('pengaduan') }}</div>
             @endif
 
-            <div class="card mt-3">Form Pengisian Pengaduan</div>
+            <div class="card">Form Pengisian Pengaduan</div>
             <form action="{{ route('depan.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group mt-3">
-                    <input name="judul" placeholder="Masukkan Subject" class="form-control"
+                    <input name="judul" placeholder="Masukan subject" class="form-control"
                         rows="4">{{ old('judul') }}</input>
                 </div>
                 <div class="form-group mt-3">
-                    <textarea name="deskripsi" placeholder="Masukkan Isi Laporan" class="form-control"
+                    <textarea name="deskripsi" placeholder="Masukan isi laporan" class="form-control"
                         rows="4">{{ old('deskripsi') }}</textarea>
                 </div>
                 <div class="form-group mt-3">
@@ -52,12 +52,6 @@
 </div>
 
 {{-- Footer --}}
-<div class="mt-5">
-    <hr>
-</div>
-    <div class="text-center">
-        <p class="italic text-secondary"></p>
-    </div>
-</div>
+
 </section>
 @endsection

@@ -100,3 +100,7 @@ hr {
     background: linear-gradient(331deg, #0233B3 0%, rgba(21, 75, 210, 0.79) 100%);;
     color: aliceblue;
 }
+.hitung {
+    background-color: rgb(189, 26, 26);
+    width: 1px;
+}

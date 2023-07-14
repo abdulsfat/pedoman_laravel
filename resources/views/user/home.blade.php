@@ -8,15 +8,15 @@
 
 @section('content')
 <!-- Hero 2 - Bootstrap Brain Component -->
-<section class="konten mt-5 container overflow-hidden ">
+<section class="konten mt- container overflow-hidden ">
   <div class="container mt-5 overflow-hidden">
     <div class="row gy-5 gy-lg-0 align-items-lg-center justify-content-lg-between">
       <div class="col-12 col-lg-6 order-1 order-lg-0">
-        <h1 class="h1-primary-text">Layanan <span style="color: #0233b3;">Pengaduan</span>  Online Mahasiswa <br>STT Terpadu Nurul Fikri </h1>
+        <h1 class="h1-primary-text">Layanan <span class="span">Pengaduan</span>  Online Mahasiswa<br>STT Terpadu Nurul Fikri </h1>
         <p class="span-dec-text mt-4">Sampaikan Laporan Anda di manapun kapanpun secara online melalui layanan aplikasi pedoman yang dapat terhubung secara langsung dengan petugas.</p>
-        <div class="d-grid gap-2 d-sm-flex">
+        <div class="d-grid d-sm-flex">
 
-          <a href="{{ route('depan.pengaduan') }}" type="button" class="mt-4 btn btn-primary btn-2xl rounded-pill px-4 gap-3">Buat Pengaduan</a>
+          <a href="{{ route('depan.pengaduan') }}" type="button" class="btn-hero shadow-sm">Buat Pengaduan</a>
 
         </div>
       </div>

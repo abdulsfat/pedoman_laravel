@@ -20,13 +20,13 @@
 
 <!-- navbar  -->
 <div class="">
-<nav class="navbar navbar-custom navbar-expand-lg shadow-sm p-3 mb-5   "fixed-top aria-label="Thirteenth navbar example">
+<nav class="navbar navbar-custom navbar-expand-lg shadow-sm p-3 fixed-top "fixed-top aria-label="Thirteenth navbar example">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+        <div class="collapse navbar-collapse d-lg-flex " id="navbarsExample11">
         <a class="navbar-brand col-lg-3 me-0" href="#">
       <img src="{{ asset('images/Logo.svg') }}" alt="Logo"  height="30" class="d-inline-block align-text-top">
         </a>

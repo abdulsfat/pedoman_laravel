@@ -9,21 +9,21 @@
 
 @section('content')
 {{-- Section Card --}}
-<section mb-5 class=" mt-5 container overflow-hidden ">
+<section class="  container overflow-hidden ">
 <div class="container mt-5 overflow-hidden">
     <div class="row justify-content-center">
         </div>
-        <div class="card text-center card-laporan">
+        <div class="card text-end card-laporan">
             <div class="content content-bottom shadow">
                 <div>
                     {{-- <img src="{{ asset('images/user_default.svg') }}" alt="user profile" class="photo"> --}}
-                    <div class="p-3 mt-2 self-alig semi-bold ">
+                    <div class="p-3 mt-2 mb-4 self-alig semi-bold ">
                         <h5>{{ Auth::user()->name }}</h5>
                         <p class=" italic">{{ Auth::user()->email }}</p>
                     </div>
-                    <div class="row text-center mb-4">
-                        <div class="col">
-                            <p class="italic mb-0">Terverifikasi</p>
+                    <div class="row text-center mb-4 ">
+                        <div class="col ">
+                            <p class="italic mb-0 ">Terverifikasi</p>
                             <div class="text-center">
                                 {{ $hitung[0] }}
                             </div>
