@@ -45,44 +45,45 @@ class UserController extends Controller
         $data = $request->all();
 
         $validate = Validator::make($data, [
-            'judul' => ['required'],
             'deskripsi' => ['required'],
+        ]);
+
+        $validate = Validator::make($data, [
+            'deskripsi' => ['required'],
+            'foto' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'], // Batasan jenis file dan ukuran file
         ]);
 
         if ($validate->fails()) {
             return redirect()->back()->withInput()->withErrors($validate);
         }
 
+        if ($request->file('foto')) {
+            $data['foto'] = $request->file('foto')->store('assets/pengaduan', 'public');
+        }
+
         date_default_timezone_set('Asia/Bangkok');
 
-      if ($request->hasFile('foto')) {
-    $foto = $request->file('foto')->store('assets/laporan', 'public');
-} else {
-    $foto = null;
-}
-
-$pengaduan = Pengaduan::create([
-    'tgl_pengaduan' => date('Y-m-d H:i:s'),
-    'user_id' => auth()->id(),
-    'judul' => $request->judul,
-    'deskripsi' => $request->deskripsi,
-    'foto' => $foto,
-    'status' => 'pending',
-]);
+        $pengaduan = Pengaduan::create([
+            'tgl_pengaduan' => date('Y-m-d H:i:s'),
+            'user_id' => auth()->id(),
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'foto' => $data['foto'] ?? '',
+            'status' => 'pending',
+        ]);
 
         if ($pengaduan) {
-            return redirect()->route('depan.laporan', 'me')->with(['success' => 'Berhasil terkirim!', 'type' => 'success']);
+            return redirect()->route('depan.laporan', 'me')->with(['pengaduan' => 'Berhasil terkirim!', 'type' => 'success']);
         } else {
-            return redirect()->back()->with(['error' => 'Gagal terkirim!', 'type' => 'danger']);
+            return redirect()->back()->with(['pengaduan' => 'Gagal terkirim!', 'type' => 'danger']);
         }
-        
     }
 
     public function laporan($siapa = '')
     {
         $user_id = auth()->id();
 
-        $terverifikasi = Pengaduan::where([['user_id', $user_id], ['status', '!=', '0']])->count();
+        $terverifikasi = Pengaduan::where([['user_id', $user_id], ['status', '!=', '']])->count();
         $proses = Pengaduan::where([['user_id', $user_id], ['status', 'proses']])->count();
         $selesai = Pengaduan::where([['user_id', $user_id], ['status', 'selesai']])->count();
 
@@ -93,7 +94,7 @@ $pengaduan = Pengaduan::create([
 
             $pengaduan = Pengaduan::where('user_id', $user_id)->orderBy('tgl_pengaduan', 'desc')->get();
 
-            return view('user.laporan', compact('pengaduan', 'hitung', 'siapa'));
+            return view('user.laporan', ['pengaduan' => $pengaduan, 'hitung' => $hitung, 'siapa' => $siapa]);;
         } else {
             $user_id = auth()->user()->user_id;
 
@@ -102,11 +103,9 @@ $pengaduan = Pengaduan::create([
                 ['status', '!=', '0'],
             ])->orderBy('tgl_pengaduan', 'desc')->get();
 
-            return view('user.laporan', compact('pengaduan', 'hitung', 'siapa'));
+            return view('user.laporan', ['pengaduan' => $pengaduan, 'hitung' => $hitung, 'siapa' => $siapa]);
         }
 
     }
 
-
 }
-

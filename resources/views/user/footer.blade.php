@@ -23,15 +23,15 @@
     <div class="col-3 ">
       <h5>Link Penting</h5>
       <ul class="nav flex-column mt-3">
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Beranda</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pengaduan</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Prosedur</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Laporan</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Kontak</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Beranda</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Pengaduan</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Prosedur</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Laporan</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Kontak</a></li>
       </ul>
     </div>
 
-    <div class="col-3">
+    <div class="col-4">
       <h5>Kontak</h5>
       <ul class="nav flex-column footernav-item mt-3 ">
         <p  class="italic">Kampus A : Jl. Situ Indah 116, Tugu, Cimanggis, Depok, Jawa Barat.</p>
