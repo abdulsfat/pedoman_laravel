@@ -79,33 +79,22 @@ class UserController extends Controller
         }
     }
 
-    public function laporan($siapa = '')
+    public function laporan($siapa = '') 
     {
         $user_id = auth()->id();
-
-        $terverifikasi = Pengaduan::where([['user_id', $user_id], ['status', '!=', '']])->count();
-        $proses = Pengaduan::where([['user_id', $user_id], ['status', 'proses']])->count();
+        $terverifikasi = Pengaduan::where([['user_id', $user_id], ['status', '!=', 'pending']])->count();
+        $proses = Pengaduan::where([['user_id', $user_id], ['status', 'diproses']])->count();
         $selesai = Pengaduan::where([['user_id', $user_id], ['status', 'selesai']])->count();
-
         $hitung = [$terverifikasi, $proses, $selesai];
-
+    
         if ($siapa == 'me') {
-            $user_id = auth()->user()->user_id;
-
             $pengaduan = Pengaduan::where('user_id', $user_id)->orderBy('tgl_pengaduan', 'desc')->get();
-
-            return view('user.laporan', ['pengaduan' => $pengaduan, 'hitung' => $hitung, 'siapa' => $siapa]);;
         } else {
-            $user_id = auth()->user()->user_id;
-
-            $pengaduan = Pengaduan::where([
-                ['user_id', '!=', $user_id],
-                ['status', '!=', '0'],
-            ])->orderBy('tgl_pengaduan', 'desc')->get();
-
-            return view('user.laporan', ['pengaduan' => $pengaduan, 'hitung' => $hitung, 'siapa' => $siapa]);
+            $pengaduan = Pengaduan::orderBy('tgl_pengaduan', 'desc')->get();
         }
-
+    
+        return view('user.laporan', ['pengaduan' => $pengaduan, 'hitung' => $hitung, 'siapa' => $siapa]);
     }
+    
 
 }

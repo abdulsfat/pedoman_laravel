@@ -9,7 +9,7 @@
 
 @section('content')
 {{-- Section Card --}}
-<section class="  container overflow-hidden ">
+<section class="konten-laporan  container ">
 <div class="container mt-5 overflow-hidden">
     <div class="row justify-content-center">
         </div>
@@ -112,9 +112,11 @@
                               </td>
                               <td>
                                 @if ($item->tanggapan)
-                                  <p class="mt-3 mb-1">{{ '*Tanggapan dari '. $item->tanggapan->petugas->nama_petugas }}</p>
-                                  <p class="light">{{ $item->tanggapan->tanggapan }}</p>
-                                @endif
+                                <p style="font-size: 12px" class=" mb-1">{{ '*Tanggapan dari '. $item->tanggapan->petugas->name}}</p>
+                                <p class="light">{{ $item->tanggapan->tanggapan }}</p>
+                            @else
+                                <p class="light">Belum ada tanggapan untuk pengaduan ini.</p>
+                            @endif                            
                               </td>
                             </tr>
                           @endforeach

@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;1,400;&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     @yield('css')
 
@@ -20,34 +21,34 @@
 
 <!-- navbar  -->
 <div class="">
-<nav class="navbar navbar-custom navbar-expand-lg shadow-sm p-3 fixed-top "fixed-top aria-label="Thirteenth navbar example">
-      <div class="container-fluid">
+<nav class="navbar navbar-custom navbar-expand-lg shadow-sm p-3 fixed-top " aria-label="Thirteenth navbar example">
+      <div class="container-fluid ">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse d-lg-flex " id="navbarsExample11">
+        <div class="collapse navbar-collapse d-lg-flex bg-white " id="navbarsExample11">
         <a class="navbar-brand col-lg-3 me-0" href="#">
       <img src="{{ asset('images/Logo.svg') }}" alt="Logo"  height="30" class="d-inline-block align-text-top">
         </a>
 
-          <ul class=" navbar-nav col-lg-6 justify-content-lg-center">
+          <ul class=" navbar-nav col-lg-6 justify-content-lg-center p-sm-5 p-lg-0 ">
               <li class="nav-item">
                 <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page" href="{{ route('depan.home') }}">Beranda</a>
               </li>
-              <li class="ms-5 nav-item">
+              <li class="ms-lg-5 nav-item">
                 <a class="nav-link {{ request()->is('pengaduan') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.pengaduan') }}">Pengaduan</a>
               </li>
-              <li class="ms-5 nav-item">
+              <li class="ms-lg-5 nav-item">
                 <a class="nav-link {{ request()->is('prosedur') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.prosedur') }}">Prosedur</a>
               </li>
 
-              <li class="ms-5 nav-item">
+              <li class="ms-lg-5 nav-item">
                 <a class="nav-link {{ request()->is('kontak') ? 'active' : '' }} " aria-current="page" href="{{ route('depan.kontak') }}">Kontak</a>
               </li>
               @auth
               @if(Auth::user()->role == 'mahasiswa')
-                  <li class="ms-5 nav-item">
+                  <li class="ms-lg-5 nav-item">
                       <a class="nav-link {{ request()->is('user/laporan') ? 'active' : '' }}" aria-current="page" href="{{ route('depan.laporan') }}">Laporan</a>
                   </li>
               @endif
@@ -113,6 +114,7 @@
       integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" 
       crossorigin="anonymous">
     </script>
+      <script src="https://maps.google.com/maps/api/js"></script>
         <!-- script -->
         @vite(['resources/js/app.js'])
 

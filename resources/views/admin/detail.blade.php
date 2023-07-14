@@ -19,7 +19,7 @@ Detail Pengaduan
           class="text-gray-800 text-sm font-semibold px-4 py-4 mb-4 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:text-gray-400 ">
 
           <h2>Nama : {{ $item->user->name }}</h2>
-          <h2 class="mt-4">NIM : {{ $item->user->name }}</h2>
+          <h2 class="mt-4">NIM : {{ $item->user->nim }}</h2>
           <h2 class="mt-4">Email : {{ $item->email->email }}</h2>
           <h2 class="mt-4">Tanggal : {{ $ite->created_at->format('l, d F Y - H:i:s') }}</h2>
           

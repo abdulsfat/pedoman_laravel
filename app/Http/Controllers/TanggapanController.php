@@ -42,23 +42,40 @@ class TanggapanController extends Controller
     // Import the Carbon class if you haven't done it already
 
     public function store(Request $request)
-    {
-        DB::table('pengaduan')->where('id', $request->pengaduan_id)->update([
-            'status' => $request->status,
+{
+    $pengaduanId = $request->pengaduan_id;
+    $petugasId = Auth::user()->id;
+    $tglTanggapan = Carbon::now();
+
+    $tanggapan = Tanggapan::where('pengaduan_id', $pengaduanId)->first();
+
+    if ($tanggapan) {
+        $tanggapan->update([
+            'tanggapan' => $request->tanggapan,
+            'petugas_id' => $petugasId,
+            'tgl_tanggapan' => $tglTanggapan,
         ]);
+        Alert::success('Berhasil', 'Tanggapan berhasil diperbarui');
+    } else {
+        $data = [
+            'pengaduan_id' => $pengaduanId,
+            'tanggapan' => $request->tanggapan,
+            'petugas_id' => $petugasId,
+            'tgl_tanggapan' => $tglTanggapan,
+        ];
 
-        $petugas_id = Auth::user()->id;
-
-        $data = $request->all();
-
-        $data['pengaduan_id'] = $request->pengaduan_id;
-        $data['petugas_id'] = $petugas_id;
-        $data['tgl_tanggapan'] = Carbon::now(); // Set the value for 'tgl_tanggapan' column
-
-        Alert::success('Berhasil', 'Pengaduan berhasil ditanggapi');
         Tanggapan::create($data);
-        return redirect('admin/pengaduan');
+        Alert::success('Berhasil', 'Tanggapan berhasil ditambahkan');
     }
+
+    $pengaduan = Pengaduan::findOrFail($pengaduanId);
+    $pengaduan->status = $request->status;
+    $pengaduan->save();
+
+    return redirect()->route('admin.pengaduan', $pengaduan)->with('status', 'Tanggapan dan status berhasil diperbarui');
+}
+
+    
 
     /**
      * Display the specified resource.

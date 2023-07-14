@@ -167,14 +167,18 @@
                 <span class="ml-4">Laporan</span>
               </a>
             </li>
+            @if( Auth::user()->role == 'admin')
           <div class="px-6 my-6">
+            <a href="{{ route('admin.create')}}">
             <button
               class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-950 focus:outline-none focus:shadow-outline-blue"
             >
-              Create account
+            Buat akun baru
               <span class="ml-2" aria-hidden="true">+</span>
             </button>
+          </a>
           </div>
+          @endif
         </div>
       </aside>
       <!-- Mobile sidebar -->
@@ -338,16 +342,19 @@
               </template>
             </li>
           </ul>
+          @if( Auth::user()->role == 'admin')
           <div class="px-6 my-6">
-            
+            <a href="{{ route('admin.create')}} ">
             <button
             
-              class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+              class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
             >
-              Create account
+              Buat akun baru
               <span class="ml-2" aria-hidden="true">+</span>
             </button>
+          </a>
           </div>
+          @endif
         </div>
       </aside>
       <div class="flex flex-col flex-1 w-full">

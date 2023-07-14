@@ -22,7 +22,7 @@
 
           <div class="col-lg-3 col-6">
             <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
+              <i class="bi bi-pen"></i>
               <span class="purecounter">Tulis Laporan</span>
                <p>Tulis laporan keluhan Anda dengan jelas</p>
             </div>
@@ -30,7 +30,7 @@
 
           <div class="col-lg-3 col-6">
             <div class="count-box">
-              <i class="bi bi-journal-richtext"></i>
+              <i class="bi bi-file-earmark-check"></i>
               <span class="purecounter">Proses Verifikasi</span>
               <p>Tunggu sampai laporan Anda diverifikasi</p>
             </div>
@@ -38,7 +38,7 @@
 
           <div class="col-lg-3 col-6 mt-5 mt-lg-0">
             <div class="count-box">
-              <i class="bi bi-headset"></i>
+         <i class="bi bi-file-earmark-arrow-up"></i>
               <span class="purecounter">Tindak Lanjut</span>
               <p>Laporan Anda sedang dalam tindak lanjut</p>
             </div>
@@ -46,7 +46,7 @@
 
           <div class="col-lg-3 col-6 mt-5 mt-lg-0">
             <div class="count-box">
-              <i class="bi bi-people"></i>
+              <i class="bi bi-check2-square"></i>
               <span>Selesai</span>
               <p>Laporan pengaduan telah selesai ditindak</p>
             </div>
@@ -68,37 +68,37 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="icon-box">
-                  <i class="bi bi-briefcase"></i>
+                  <i class="bi bi-building-exclamation"></i>
                   <p>Tidak tersedianya sarana prasarana pembelajaran yang memadai (kurang; rusak; tidak tersedia).</p>
                 </div>
               </div>
               <div class="col-md-6 mt-4 mt-lg-0">
                 <div class="icon-box">
-                  <i class="bi bi-briefcase"></i>
+                  <i class="bi bi-envelope-exclamation"></i>
                   <p>Dosen atau Dosen Pembimbing yang tidak obyektif dan transparan dalam melakukan penilaian.</p>
                 </div>
               </div>
               <div class="col-md-6 mt-4">
                 <div class="icon-box">
-                  <i class="bi bi-briefcase"></i>
+                  <i class="bi bi-person-fill-exclamation"></i>
                   <p>Dosen atau Dosen Pembimbing tidak memiliki kualifikasi akademik dan atau pengalaman yang sesuai dengan Mata Kuliah.</p>
                 </div>
               </div>
               <div class="col-md-6 mt-4">
                 <div class="icon-box">
-                  <i class="bi bi-briefcase"></i>
+                  <i class="bi bi-clock-history"></i>
                   <p>Dosen atau Dosen Pembimbing yang tidak menyediakan waktu bimbingan atau konsultasi yang memadai.</p>
                 </div>
               </div>
               <div class="col-md-6 mt-4">
                 <div class="icon-box">
-                  <i class="bi bi-briefcase"></i>
+                  <i class="bi bi-clipboard2-x"></i>
                   <p>Proses pembelajaran tidak sesuai Rancangan Perkuliahan.</p>
                 </div>
               </div>
               <div class="col-md-6 mt-4">
                 <div class="icon-box">
-                  <i class="bi bi-briefcase"></i>
+                  <i class="bi bi-bookmark-heart"></i>
                   <p>Layanan akademik yang tidak memuaskan, dan sebagainya.</p>
                 </div>
               </div>

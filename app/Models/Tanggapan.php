@@ -9,7 +9,7 @@ class Tanggapan extends Model
 {
     use HasFactory;
     protected $table = 'tanggapan';
-    protected $primaryKey = 'tanggapan_id';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'pengaduan_id',
         'tgl_tanggapan',
@@ -17,4 +17,13 @@ class Tanggapan extends Model
         'petugas_id',
     ];
 
+    
+    public function pengaduan()
+    {
+        return $this->belongsTo(Pengaduan::class, 'pengaduan_id');
+    }
+    public function petugas()
+    {
+        return $this->belongsTo(User::class, 'petugas_id');
+    }
 }

@@ -15,13 +15,8 @@ class Pengaduan extends Model
      * @var string
      */
     protected $table = 'pengaduan';
-
-    /**
-     *
-     * @var array
-     */
+    protected $primaryKey = 'id';
     protected $fillable = [
-        'pengaduan_id',
         'tgl_pengaduan',
         'nim',
         'user_id',
@@ -30,7 +25,7 @@ class Pengaduan extends Model
         'foto',
         'status',
     ];
-
+  
     public function pengaduan()
     {
         return $this->hasOne(Pengaduan::class, 'id', 'id');
@@ -47,6 +42,11 @@ class Pengaduan extends Model
     {
         return $this->hasMany(Pengaduan::class, 'id', 'id');
     }
+    public function tanggapan()
+    {
+        return $this->hasOne(Tanggapan::class, 'pengaduan_id');
+    }
+
     protected $casts = [
         'status' => 'string',
     ];

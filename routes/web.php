@@ -35,7 +35,7 @@ Route::post('/store', [UserController::class, 'storePengaduan'])->name('depan.st
 Route::prefix('user')
     ->middleware(['auth', 'MahasiswaMiddleware'])
     ->group(function () {
-        Route::get('/laporan', [UserController::class, 'laporan'])->name('depan.laporan');
+        Route::get('/laporan/{siapa?}', [UserController::class, 'laporan'])->name('depan.laporan');
     });
 
 Route::middleware(['auth'])->group(function () {
