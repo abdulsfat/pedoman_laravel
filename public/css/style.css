@@ -18,7 +18,6 @@
 .cara {
     background: white;
     padding: 30px 0 40px 0;
-
 }
 
 .cara .count-box {
@@ -64,17 +63,64 @@
 }
 
 /*--------------------------------------------------------------
+# kontak
+--------------------------------------------------------------*/
+.kontak {
+    padding: 30px 0 40px 0;
+}
+.kontak .count-box {
+    margin: 40px 0px 10px 0px;
+    padding: 30px 15px 25px 15px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.kontak .count-box i {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    background: #ff6b00;
+    padding: 12px;
+    color: #fff;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+}
+
+.kontak .count-box span {
+    font-size: 16px;
+    display: block;
+    font-weight: 600;
+    color: #0233b3;
+}
+
+.kontak .count-box p {
+    color: #0233b3;
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+}
+/*--------------------------------------------------------------
 # role
 --------------------------------------------------------------*/
 .role {
-  background: #0233b3;
-  padding: 0px 0px 80px 0px;
+    background: #0233b3;
+    padding: 0px 0px 80px 0px;
 }
 
 .role .container .section-title {
-  color: white;
-  padding-bottom: 10px;
-} 
+    color: white;
+    padding-bottom: 10px;
+}
 .role .icon-box {
     padding: 30px;
     border-radius: 6px;
@@ -84,16 +130,15 @@
 
 .role .icon-box i {
     float: left;
-    color: #3498db;
+    color: #0233b3;
     font-size: 40px;
     line-height: 0;
 }
 
 .role .icon-box h4 {
-
     font-weight: 700;
     margin-bottom: 15px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .role .icon-box h4 a {
@@ -103,6 +148,10 @@
 
 .role .icon-box p {
     margin-left: 70px;
+    line-height: 24px;
+    font-size: 14px;
+}
+.role .icon-box li {
     line-height: 24px;
     font-size: 14px;
 }

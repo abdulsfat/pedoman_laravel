@@ -18,21 +18,39 @@ Tanggapan
           <span class="text-gray-700 dark:text-gray-400">Tanggapan</span>
           <textarea
             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-            rows="8" type="text" placeholder="Isi Tanggapan Anda" value="{{ old('description')}}"
+            rows="8" type="text" 
+            @if (empty($item->tanggapan->tanggapan))
+            placeholder="Berikan tanggapan"
+            @else
+            placeholder="{{ $item->tanggapan->tanggapan}}"
+            @endif
+             value=""
             name="tanggapan"></textarea>
         </label>
 
         <label class="block mt-4 text-sm">
           <span class="text-gray-700 dark:text-gray-400">Status</span>
 
-          <select
-            class="block w-full text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-            name="status">
-            <option value="pending">Tertunda</option>
-            <option value="diproses">Proses</option>
-            <option value="selesai">Selesai</option>
-
+          <select class="block w-full text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" name="status">
+            @if ($item->status == 'tertunda')
+              <option value="pending" selected>Pending</option>
+              <option value="diproses">Proses</option>
+              <option value="selesai">Selesai</option>
+            @elseif ($item->status == 'diproses')
+              <option value="pending">Pending</option>
+              <option value="diproses" selected>Proses</option>
+              <option value="selesai">Selesai</option>
+            @elseif ($item->status == 'selesai')
+              <option value="pending">Pending</option>
+              <option value="diproses">Proses</option>
+              <option value="selesai" selected>Selesai</option>
+            @else
+              <option value="pending">Pending</option>
+              <option value="diproses">Proses</option>
+              <option value="selesai">Selesai</option>
+            @endif
           </select>
+          
         </label>
 
 
