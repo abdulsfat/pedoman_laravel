@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\TanggapanController;
@@ -43,7 +42,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
 
 });
-
 
 // Khusus Admin & Petugas
 Route::group(['middleware' => ['auth', 'peran:admin-petugas']], function () {

@@ -33,7 +33,7 @@ class Pengaduan extends Model
 
     public function pengaduan()
     {
-    	return $this->hasOne(Pengaduan::class,'id', 'id');
+        return $this->hasOne(Pengaduan::class, 'id', 'id');
     }
     public function user()
     {
@@ -43,8 +43,25 @@ class Pengaduan extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function details() {
+    public function details()
+    {
         return $this->hasMany(Pengaduan::class, 'id', 'id');
+    }
+    protected $casts = [
+        'status' => 'string',
+    ];
+
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_DIPROSES = 'diproses';
+    public const STATUS_SELESAI = 'selesai';
+
+    public static function getStatusOptions()
+    {
+        return [
+            self::STATUS_PENDING => 'Pending',
+            self::STATUS_DIPROSES => 'Diproses',
+            self::STATUS_SELESAI => 'Selesai',
+        ];
     }
 
 }
