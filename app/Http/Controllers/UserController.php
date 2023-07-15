@@ -82,7 +82,7 @@ class UserController extends Controller
     public function laporan($siapa = '') 
     {
         $user_id = auth()->id();
-        $terverifikasi = Pengaduan::where([['user_id', $user_id], ['status', '!=', 'pending']])->count();
+        $terverifikasi = Pengaduan::where([['user_id', $user_id], ['status', 'pending']])->count();
         $proses = Pengaduan::where([['user_id', $user_id], ['status', 'diproses']])->count();
         $selesai = Pengaduan::where([['user_id', $user_id], ['status', 'selesai']])->count();
         $hitung = [$terverifikasi, $proses, $selesai];
