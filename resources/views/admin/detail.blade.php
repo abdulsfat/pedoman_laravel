@@ -72,12 +72,12 @@ Detail Pengaduan
           </div>
         </div>
       </div>
-      <div class="flex justify-center my-4">
+      {{-- <div class="flex justify-center my-4">
         <a href="{{ url('admin/pengaduan/cetak', $item->id)}}"
           class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
           Export ke PDF
         </a>
-      </div>
+      </div> --}}
       <div class="flex justify-center my-6">
         <a href="
         {{ route('admin.tanggapan', $item->id)}}

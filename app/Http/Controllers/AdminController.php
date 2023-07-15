@@ -5,11 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pengaduan;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use PDF;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -41,8 +38,9 @@ class AdminController extends Controller
     }
     public function petugas()
     {
+        $users = User::all();
         $data = User::whereIn('role', ['petugas', 'admin'])->get();
-    
+
         return view('admin.petugas', [
             'data' => $data,
         ]);
@@ -66,8 +64,6 @@ class AdminController extends Controller
             'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);
-
-        Alert::success('Berhasil', 'Petugas baru ditambahkan');
         return redirect('admin/petugas');
     }
 
@@ -81,25 +77,40 @@ class AdminController extends Controller
         ]);
     }
 
-    public function cetak()
+    // public function cetak()
+    // {
+
+    //     $pengaduan = Pengaduan::all();
+
+    //     $pdf = FacadePdf::loadview('admin.pengaduan', [
+    //         'pengaduan' => $pengaduan,
+    //     ]);
+    //     return $pdf->download('laporan.pdf');
+    // }
+
+    // public function pdf($id)
+    // {
+
+    //     $pengaduan = Pengaduan::find($id);
+
+    //     $pdf = FacadePdf::loadview('admin.pengaduan.cetak', compact('pengaduan'))->setPaper('a4');
+    //     return $pdf->download('laporan-pengaduan.pdf');
+    // }
+
+    public function destroy($id)
     {
-
-        $pengaduan = Pengaduan::all();
-
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadview('admin.pengaduan', [
-            'pengaduan' => $pengaduan,
-        ]);
-        return $pdf->download('laporan.pdf');
+        $user = User::find($id);
+    
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found');
+        }
+    
+        $user->tanggapan()->delete();
+    
+        // Hapus user
+        $user->delete();
+    
+        return redirect()->back()->with('success', 'Deleted successfully');
     }
 
-    public function pdf($id)
-    {
-
-        $pengaduan = Pengaduan::find($id);
-
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadview('admin.cetak', compact('pengaduan'))->setPaper('a4');
-        return $pdf->download('laporan-pengaduan.pdf');
-    }
 }
