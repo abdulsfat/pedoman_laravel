@@ -3,10 +3,9 @@ body {
 }
 
 .h1-primary-text {
-    font-family: Poppins;
     font-size: 52px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 900;
     line-height: 60px;
 }
 .h1-primary-text .span {
@@ -62,22 +61,20 @@ body {
     font-style: normal;
     font-weight: 500;
     line-height: 25px;
-
     top: 0;
     width: 100%;
 }
 
-.navbar-warna{
+.navbar-warna {
     background-color: #4a5568;
 }
 
 .konten {
     padding-top: 60px;
-    height: 100vh;
+
 }
 .konten-laporan {
     padding-top: 60px;
-
 }
 .hero {
     height: 500px;
@@ -110,19 +107,18 @@ body {
     padding-top: 60px;
     width: 100%;
     height: 100vh;
+    padding-bottom: 30px;
     background: linear-gradient(340deg, #0a2b7f 0%, rgb(20, 72, 202) 100%);
 }
 
 @media screen and (max-width: 576px) {
     .footer-sm {
         margin-top: 40px;
-
     }
 }
 @media screen and (max-width: 992px) {
     .footer-sm {
         margin-top: 40px;
-
     }
 }
 

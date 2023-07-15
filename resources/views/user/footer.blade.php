@@ -23,11 +23,15 @@
     <div class="col-lg-3  col-sm-12 footer-sm">
       <h5>Link Penting</h5>
       <ul class="nav flex-column mt-3">
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Beranda</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Pengaduan</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Prosedur</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Laporan</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Kontak</a></li>
+        <li class="nav-item mb-2"><a href="{{ route('depan.home') }}" class="nav-link p-0 ">Beranda</a></li>
+        <li class="nav-item mb-2"><a href="{{ route('depan.pengaduan') }}" class="nav-link p-0 ">Pengaduan</a></li>
+        <li class="nav-item mb-2"><a href="{{ route('depan.prosedur') }}" class="nav-link p-0 ">Prosedur</a></li>
+        <li class="nav-item mb-2"><a href="{{ route('depan.kontak') }}" class="nav-link p-0 ">Kontak</a></li>
+        @auth
+        @if(Auth::user()->role == 'mahasiswa')
+        <li class="nav-item mb-2"><a href="{{ route('depan.laporan') }}" class="nav-link p-0 ">Laporan</a></li>
+        @endif
+        @endauth
       </ul>
     </div>
 

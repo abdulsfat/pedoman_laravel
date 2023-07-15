@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ asset('css/laporan.css') }}">
 @endsection
 
-@section('title', 'Pedoman - Pengaduan Online Mahasiswa STT-NF')
+@section('title', 'Pengaduan - Pengaduan Online Mahasiswa STT-NF')
 
 @section('content')
 {{-- Section Header --}}
@@ -16,7 +16,7 @@
         <p class="italic text-white">Harap buat pengaduan yang relevan dengan prosedur dan disarankan mencantumkan bukti foto yang mendukung.</p> 
     </div>
 {{-- Section Card Pengaduan --}}
-<div class="row justify-content-center">
+<div class=" row justify-content-center">
     <div class="col-lg-6 col-10 col">
         <div class="content shadow card">
 

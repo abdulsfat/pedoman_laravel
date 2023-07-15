@@ -49,6 +49,10 @@ class TanggapanController extends Controller
 
     $tanggapan = Tanggapan::where('pengaduan_id', $pengaduanId)->first();
 
+    $request->validate([
+        'tanggapan' => 'required', // Validasi bahwa tanggapan tidak boleh kosong
+    ]);
+
     if ($tanggapan) {
         $tanggapan->update([
             'tanggapan' => $request->tanggapan,
@@ -74,6 +78,11 @@ class TanggapanController extends Controller
 
     return redirect()->route('admin.pengaduan', $pengaduan)->with('status', 'Tanggapan dan status berhasil diperbarui');
 }
+
+    
+
+    
+    
 
     
 
