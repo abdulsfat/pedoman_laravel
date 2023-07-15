@@ -53,6 +53,9 @@ Route::group(['middleware' => ['auth', 'peran:admin-petugas']], function () {
     Route::get('/admin/pengaduan/detail/{id}', [PengaduanController::class, 'detail'])->name('pengaduan.detail');
     Route::delete('/admin/pengaduan/{id}', [PengaduanController::class, 'destroy'])->name('admin.pengaduan.destroy');
 
+    Route::delete('/admin/user/{id}', [AdminController::class, 'destroy'])->name('admin.user.destroy');
+
+
     Route::get('/admin/mahasiswa', [AdminController::class, 'mahasiswa'])->name('admin.mahasiswa');
     Route::get('/admin/petugas', [AdminController::class, 'petugas'])->name('admin.petugas');
 

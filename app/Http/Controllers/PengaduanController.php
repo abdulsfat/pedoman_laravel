@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pengaduan;
 use App\Models\Tanggapan;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
+
 
 class PengaduanController extends Controller
 {
@@ -99,16 +99,21 @@ class PengaduanController extends Controller
     public function destroy($id)
     {
         $pengaduan = Pengaduan::find($id);
-        $pengaduan->delete();
-
+    
+        if (!$pengaduan) {
+            return redirect('admin/pengaduan')->with('toast_error', 'Pengaduan tidak ditemukan');
+        }
+    
+        $pengaduan->tanggapan()->delete(); // Menghapus tanggapan terkait
+        $pengaduan->delete(); // Menghapus pengaduan
+    
         $title = 'Hapus Pengaduan!';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
-
-        return redirect('admin/pengaduan')->with('toast_success', 'Pengaduan berhasil dihapus');
-
-        
+    
+        return redirect('admin/pengaduan')->with('success', 'Pengaduan berhasil dihapus');
     }
+    
 }
     
 

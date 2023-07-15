@@ -96,5 +96,6 @@ class UserController extends Controller
         return view('user.laporan', ['pengaduan' => $pengaduan, 'hitung' => $hitung, 'siapa' => $siapa]);
     }
     
+    
 
 }
