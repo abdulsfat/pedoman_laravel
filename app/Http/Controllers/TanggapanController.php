@@ -59,7 +59,6 @@ class TanggapanController extends Controller
             'petugas_id' => $petugasId,
             'tgl_tanggapan' => $tglTanggapan,
         ]);
-        Alert::success('Berhasil', 'Tanggapan berhasil diperbarui');
     } else {
         $data = [
             'pengaduan_id' => $pengaduanId,
@@ -69,14 +68,13 @@ class TanggapanController extends Controller
         ];
 
         Tanggapan::create($data);
-        Alert::success('Berhasil', 'Tanggapan berhasil ditambahkan');
     }
 
     $pengaduan = Pengaduan::findOrFail($pengaduanId);
     $pengaduan->status = $request->status;
     $pengaduan->save();
 
-    return redirect()->route('admin.pengaduan', $pengaduan)->with('status', 'Tanggapan dan status berhasil diperbarui');
+    return redirect()->route('admin.pengaduan', $pengaduan)->with('toast_success', 'Pengaduan berhasil ditanggapi');
 }
 
     

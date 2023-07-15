@@ -101,8 +101,11 @@ class PengaduanController extends Controller
         $pengaduan = Pengaduan::find($id);
         $pengaduan->delete();
 
-        Alert::success('Berhasil', 'Pengaduan telah di hapus');
-        return redirect('admin/pengaduan');
+        $title = 'Hapus Pengaduan!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+
+        return redirect('admin/pengaduan')->with('toast_success', 'Pengaduan berhasil dihapus');
 
         
     }
